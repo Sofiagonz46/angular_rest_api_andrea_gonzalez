@@ -1,0 +1,85 @@
+.back {
+  margin-bottom: 8px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.body {
+  padding: 16px;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.photo {
+  width: 100%;
+  max-width: 280px;
+  max-height: 400px;
+  align-self: flex-start;
+  object-fit: contain;
+  background: var(--mat-sys-surface-container);
+  border-radius: 12px;
+  cursor: zoom-in;
+}
+
+.info {
+  flex: 1 1 280px;
+}
+
+h1 {
+  margin: 0 0 8px;
+}
+
+h2 {
+  margin: 24px 0 8px;
+  font-size: 18px;
+}
+
+.fact {
+  margin: 0 0 4px;
+}
+
+.quote {
+  margin: 12px 0;
+  padding-left: 12px;
+  font-style: italic;
+  color: var(--mat-sys-on-surface-variant);
+  border-left: 3px solid var(--mat-sys-primary);
+}
+
+.styles {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.style {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.style img {
+  width: 140px;
+  height: 100px;
+  object-fit: contain;
+  background: var(--mat-sys-surface-container);
+  border-radius: 8px;
+  cursor: zoom-in;
+}
+
+.style div {
+  flex: 1 1 240px;
+}
+
+.style p {
+  margin: 4px 0 0;
+}

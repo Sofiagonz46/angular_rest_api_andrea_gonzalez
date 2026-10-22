@@ -1,0 +1,68 @@
+<a mat-button routerLink="/demon-slayer" class="back">
+  <mat-icon>arrow_back</mat-icon>
+  Volver al listado
+</a>
+
+@if (loading()) {
+  <div class="center">
+    <mat-spinner [diameter]="48" />
+  </div>
+} @else if (character(); as d) {
+  <mat-card appearance="outlined">
+    <div class="body">
+      <div class="top">
+        @if (d.img) {
+          <img class="photo" [src]="d.img" [alt]="d.name" title="Ampliar imagen" (click)="openImage(d.img, d.name)">
+        }
+
+        <div class="info">
+          <h1>#{{ d.id }} {{ d.name }}</h1>
+          @for (f of facts(); track f.label) {
+            <p class="fact"><strong>{{ f.label }}:</strong> {{ f.value }}</p>
+          }
+          @if (d.quote) {
+            <p class="quote">“{{ d.quote }}”</p>
+          }
+          @if (d.description) {
+            <p>{{ d.description }}</p>
+          }
+        </div>
+      </div>
+
+      @if (d.affiliation; as aff) {
+        <h2>Afiliación: {{ aff.name }}</h2>
+        @if (aff.description) {
+          <p>{{ aff.description }}</p>
+        }
+      }
+
+      @if (d.first_arc_appearance; as arc) {
+        <h2>Primera aparición: {{ arc.name }}</h2>
+        @if (arc.description) {
+          <p>{{ arc.description }}</p>
+        }
+      }
+
+      @if (d.combat_style?.length) {
+        <h2>Estilos de combate</h2>
+        <div class="styles">
+          @for (s of d.combat_style ?? []; track s.id) {
+            <div class="style">
+              @if (s.img) {
+                <img [src]="s.img" [alt]="s.name" title="Ampliar imagen" (click)="openImage(s.img, s.name)">
+              }
+              <div>
+                <strong>{{ s.name }}</strong>
+                @if (s.description) {
+                  <p>{{ s.description }}</p>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </mat-card>
+} @else {
+  <p>No se encontró información de este personaje.</p>
+}

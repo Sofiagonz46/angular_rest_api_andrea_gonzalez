@@ -1,0 +1,28 @@
+<h1>Demon Slayer</h1>
+
+@if (loading()) {
+  <div class="center">
+    <mat-spinner [diameter]="48" />
+  </div>
+} @else {
+  <section class="grid">
+    @for (c of characters(); track c.id) {
+      <app-character-card
+        [id]="c.id"
+        [name]="c.name"
+        [image]="c.img"
+        (imageClick)="openImage(c)"
+        (cardClick)="goToDetail(c.id)" />
+    } @empty {
+      <p>No hay personajes para mostrar.</p>
+    }
+  </section>
+}
+
+<mat-paginator
+  [length]="total()"
+  [pageSize]="pageSize()"
+  [pageIndex]="pageIndex()"
+  [pageSizeOptions]="[12, 24, 48]"
+  (page)="onPage($event)"
+  showFirstLastButtons />
