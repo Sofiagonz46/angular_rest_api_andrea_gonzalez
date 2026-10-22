@@ -1,0 +1,34 @@
+.subtitle {
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card-link {
+  flex: 1 1 240px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.universe-card {
+  height: 100%;
+}
+
+.universe-card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+.go {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 16px 16px;
+  color: var(--mat-sys-primary);
+  font-weight: 500;
+}

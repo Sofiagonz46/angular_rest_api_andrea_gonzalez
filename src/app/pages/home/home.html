@@ -1,0 +1,22 @@
+<h1>Explora personajes</h1>
+<p class="subtitle">Elige un universo para ver sus personajes.</p>
+
+<section class="cards">
+  @for (u of universes; track u.path) {
+    <a class="card-link" [routerLink]="u.path">
+      <mat-card appearance="outlined" class="universe-card">
+        <img mat-card-image [src]="u.image" [alt]="u.name">
+        <mat-card-header>
+          <mat-card-title>{{ u.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ u.description }}</p>
+        </mat-card-content>
+        <div class="go">
+          Ver personajes
+          <mat-icon>arrow_forward</mat-icon>
+        </div>
+      </mat-card>
+    </a>
+  }
+</section>
