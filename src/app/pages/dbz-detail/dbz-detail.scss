@@ -1,0 +1,99 @@
+.back {
+  margin-bottom: 8px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.body {
+  padding: 16px;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.photo {
+  width: 100%;
+  max-width: 280px;
+  max-height: 400px;
+  align-self: flex-start;
+  object-fit: contain;
+  background: var(--mat-sys-surface-container);
+  border-radius: 12px;
+  cursor: zoom-in;
+}
+
+.info {
+  flex: 1 1 280px;
+}
+
+h1 {
+  margin: 0 0 8px;
+}
+
+h2 {
+  margin: 24px 0 8px;
+  font-size: 18px;
+}
+
+.fact {
+  margin: 0 0 4px;
+}
+
+.muted {
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.planet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.planet-img {
+  width: 100%;
+  max-width: 200px;
+  max-height: 140px;
+  object-fit: contain;
+  background: var(--mat-sys-surface-container);
+  border-radius: 8px;
+  cursor: zoom-in;
+}
+
+.planet-info {
+  flex: 1 1 240px;
+}
+
+.planet-info p {
+  margin: 8px 0 0;
+}
+
+.transformations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.transformation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 130px;
+  text-align: center;
+  gap: 4px;
+}
+
+.transformation img {
+  width: 100%;
+  height: 130px;
+  object-fit: contain;
+  background: var(--mat-sys-surface-container);
+  border-radius: 8px;
+  cursor: zoom-in;
+}

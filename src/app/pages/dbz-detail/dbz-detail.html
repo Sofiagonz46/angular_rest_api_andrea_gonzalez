@@ -1,0 +1,63 @@
+<a mat-button routerLink="/dbz" class="back">
+  <mat-icon>arrow_back</mat-icon>
+  Volver al listado
+</a>
+
+@if (loading()) {
+  <div class="center">
+    <mat-spinner [diameter]="48" />
+  </div>
+} @else if (character(); as d) {
+  <mat-card appearance="outlined">
+    <div class="body">
+      <div class="top">
+        @if (d.image) {
+          <img class="photo" [src]="d.image" [alt]="d.name" title="Ampliar imagen" (click)="openImage(d.image, d.name)">
+        }
+
+        <div class="info">
+          <h1>#{{ d.id }} {{ d.name }}</h1>
+          @for (f of facts(); track f.label) {
+            <p class="fact"><strong>{{ f.label }}:</strong> {{ f.value }}</p>
+          }
+          @if (d.description) {
+            <p>{{ d.description }}</p>
+          }
+        </div>
+      </div>
+
+      @if (d.originPlanet; as planet) {
+        <h2>Planeta de origen</h2>
+        <div class="planet">
+          @if (planet.image) {
+            <img class="planet-img" [src]="planet.image" [alt]="planet.name" title="Ampliar imagen" (click)="openImage(planet.image, planet.name)">
+          }
+          <div class="planet-info">
+            <strong>{{ planet.name }}</strong>
+            <span class="muted"> · {{ planet.isDestroyed ? 'Destruido' : 'No destruido' }}</span>
+            @if (planet.description) {
+              <p>{{ planet.description }}</p>
+            }
+          </div>
+        </div>
+      }
+
+      @if (d.transformations?.length) {
+        <h2>Transformaciones</h2>
+        <div class="transformations">
+          @for (t of d.transformations ?? []; track t.id) {
+            <div class="transformation">
+              <img [src]="t.image" [alt]="t.name" title="Ampliar imagen" (click)="openImage(t.image, t.name)">
+              <strong>{{ t.name }}</strong>
+              @if (t.ki) {
+                <span class="muted">Ki: {{ t.ki }}</span>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </mat-card>
+} @else {
+  <p>No se encontró información de este personaje.</p>
+}
