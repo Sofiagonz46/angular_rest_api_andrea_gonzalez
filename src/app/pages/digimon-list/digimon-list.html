@@ -1,0 +1,28 @@
+<h1>Digimon</h1>
+
+@if (loading()) {
+  <div class="center">
+    <mat-spinner [diameter]="48" />
+  </div>
+} @else {
+  <section class="grid">
+    @for (d of digimons(); track d.id) {
+      <app-character-card
+        [id]="d.id"
+        [name]="d.name"
+        [image]="d.image"
+        (imageClick)="openImage(d)"
+        (cardClick)="goToDetail(d.id)" />
+    } @empty {
+      <p>No hay personajes para mostrar.</p>
+    }
+  </section>
+}
+
+<mat-paginator
+  [length]="total()"
+  [pageSize]="pageSize()"
+  [pageIndex]="pageIndex()"
+  [pageSizeOptions]="[12, 24, 48]"
+  (page)="onPage($event)"
+  showFirstLastButtons />

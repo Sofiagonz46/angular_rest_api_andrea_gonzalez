@@ -1,0 +1,7 @@
+<mat-card appearance="outlined" class="card" (click)="cardClick.emit()">
+  <img class="photo" [src]="image()" [alt]="name()" title="Ampliar imagen" (click)="onImageClick($event)">
+  <mat-card-content>
+    <p class="id">#{{ id() }}</p>
+    <p class="name">{{ name() }}</p>
+  </mat-card-content>
+</mat-card>

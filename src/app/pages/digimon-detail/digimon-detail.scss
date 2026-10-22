@@ -1,0 +1,78 @@
+.back {
+  margin-bottom: 8px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.body {
+  padding: 16px;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.photo {
+  width: 100%;
+  max-width: 280px;
+  max-height: 320px;
+  align-self: flex-start;
+  object-fit: contain;
+  background: var(--mat-sys-surface-container);
+  border-radius: 12px;
+  cursor: zoom-in;
+}
+
+.info {
+  flex: 1 1 280px;
+}
+
+h1 {
+  margin: 0 0 8px;
+}
+
+h2 {
+  margin: 20px 0 8px;
+  font-size: 18px;
+}
+
+.muted {
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.skill {
+  margin: 0 0 12px;
+}
+
+.evolutions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.evo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 8px;
+}
+
+.evo:hover {
+  border-color: var(--mat-sys-primary);
+}
+
+.evo img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}

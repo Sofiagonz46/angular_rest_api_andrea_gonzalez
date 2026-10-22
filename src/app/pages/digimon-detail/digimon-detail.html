@@ -1,0 +1,78 @@
+<a mat-button routerLink="/digimon" class="back">
+  <mat-icon>arrow_back</mat-icon>
+  Volver al listado
+</a>
+
+@if (loading()) {
+  <div class="center">
+    <mat-spinner [diameter]="48" />
+  </div>
+} @else if (digimon(); as d) {
+  <mat-card appearance="outlined">
+    <div class="body">
+      <div class="top">
+        @if (imageUrl(); as img) {
+          <img class="photo" [src]="img" [alt]="d.name" title="Ampliar imagen" (click)="openImage(img, d.name)">
+        }
+
+        <div class="info">
+          <h1>#{{ d.id }} {{ d.name }}</h1>
+          @if (d.xAntibody) {
+            <p class="muted">Tiene X-Antibody</p>
+          }
+          @if (d.releaseDate) {
+            <p class="muted">Lanzamiento: {{ d.releaseDate }}</p>
+          }
+          @if (description(); as text) {
+            <p>{{ text }}</p>
+          }
+
+          @for (g of groups(); track g.title) {
+            <h2>{{ g.title }}</h2>
+            <mat-chip-set>
+              @for (item of g.items; track item) {
+                <mat-chip>{{ item }}</mat-chip>
+              }
+            </mat-chip-set>
+          }
+        </div>
+      </div>
+
+      @if (d.skills?.length) {
+        <h2>Habilidades</h2>
+        @for (s of d.skills ?? []; track $index) {
+          <p class="skill">
+            <strong>{{ s.skill }}</strong>
+            @if (s.translation) {
+              <span class="muted"> ({{ s.translation }})</span>
+            }
+            @if (s.description) {
+              <br>{{ s.description }}
+            }
+          </p>
+        }
+      }
+
+      @for (e of evolutions(); track e.title) {
+        <h2>{{ e.title }}</h2>
+        <div class="evolutions">
+          @for (evo of e.items; track $index) {
+            <a class="evo" [routerLink]="['/digimon', evo.id]">
+              @if (evo.image) {
+                <img [src]="evo.image" [alt]="evo.digimon">
+              }
+              <span>
+                {{ evo.digimon }}
+                @if (evo.condition) {
+                  <br><small class="muted">{{ evo.condition }}</small>
+                }
+              </span>
+            </a>
+          }
+        </div>
+      }
+    </div>
+  </mat-card>
+} @else {
+  <p>No se encontró información de este Digimon.</p>
+}
