@@ -1,0 +1,67 @@
+.back {
+  margin-bottom: 8px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.body {
+  padding: 16px;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.photo {
+  width: 100%;
+  max-width: 300px;
+  align-self: flex-start;
+  object-fit: contain;
+  background: var(--mat-sys-surface-container);
+  border-radius: 12px;
+  cursor: zoom-in;
+}
+
+.info {
+  flex: 1 1 280px;
+}
+
+h1 {
+  margin: 0 0 8px;
+}
+
+h2 {
+  margin: 20px 0 8px;
+  font-size: 18px;
+}
+
+.fact {
+  margin: 0 0 4px;
+}
+
+.stat {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin-bottom: 8px;
+}
+
+.stat-name {
+  flex: 0 0 160px;
+}
+
+.stat-value {
+  flex: 0 0 36px;
+  font-weight: 500;
+}
+
+.stat-bar {
+  flex: 1 1 160px;
+}

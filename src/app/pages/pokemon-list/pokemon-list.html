@@ -1,0 +1,28 @@
+<h1>Pokémon</h1>
+
+@if (loading()) {
+  <div class="center">
+    <mat-spinner [diameter]="48" />
+  </div>
+} @else {
+  <section class="grid">
+    @for (p of pokemons(); track p.id) {
+      <app-character-card
+        [id]="p.id"
+        [name]="p.name"
+        [image]="p.image"
+        (imageClick)="openImage(p)"
+        (cardClick)="goToDetail(p.id)" />
+    } @empty {
+      <p>No hay personajes para mostrar.</p>
+    }
+  </section>
+}
+
+<mat-paginator
+  [length]="total()"
+  [pageSize]="pageSize()"
+  [pageIndex]="pageIndex()"
+  [pageSizeOptions]="[12, 24, 48]"
+  (page)="onPage($event)"
+  showFirstLastButtons />

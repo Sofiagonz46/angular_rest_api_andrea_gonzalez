@@ -1,0 +1,59 @@
+<a mat-button routerLink="/pokemon" class="back">
+  <mat-icon>arrow_back</mat-icon>
+  Volver al listado
+</a>
+
+@if (loading()) {
+  <div class="center">
+    <mat-spinner [diameter]="48" />
+  </div>
+} @else if (pokemon(); as p) {
+  <mat-card appearance="outlined">
+    <div class="body">
+      <div class="top">
+        @if (imageUrl(); as img) {
+          <img class="photo" [src]="img" [alt]="name()" title="Ampliar imagen" (click)="openImage(img, name())">
+        }
+
+        <div class="info">
+          <h1>#{{ p.id }} {{ name() }}</h1>
+
+          @for (f of facts(); track f.label) {
+            <p class="fact"><strong>{{ f.label }}:</strong> {{ f.value }}</p>
+          }
+
+          @if (types().length) {
+            <h2>Tipos</h2>
+            <mat-chip-set>
+              @for (t of types(); track t) {
+                <mat-chip>{{ t }}</mat-chip>
+              }
+            </mat-chip-set>
+          }
+
+          @if (abilities().length) {
+            <h2>Habilidades</h2>
+            <mat-chip-set>
+              @for (a of abilities(); track a.name) {
+                <mat-chip>{{ a.name }}{{ a.hidden ? ' (oculta)' : '' }}</mat-chip>
+              }
+            </mat-chip-set>
+          }
+        </div>
+      </div>
+
+      @if (stats().length) {
+        <h2>Estadísticas base</h2>
+        @for (s of stats(); track s.name) {
+          <div class="stat">
+            <span class="stat-name">{{ s.name }}</span>
+            <span class="stat-value">{{ s.value }}</span>
+            <mat-progress-bar class="stat-bar" mode="determinate" [value]="s.percent" />
+          </div>
+        }
+      }
+    </div>
+  </mat-card>
+} @else {
+  <p>No se encontró información de este Pokémon.</p>
+}
